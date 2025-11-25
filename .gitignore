@@ -1,0 +1,20 @@
+# Ambiente
+.venv/
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Django
+staticfiles/
+media/
+
+# VSCode / PyCharm
+.idea/
+.vscode/
+*.swp
+
+# Distribuição
+*.log
+*.pot
+*.mo
+.env
