@@ -135,8 +135,83 @@ a:hover { color: var(--accent-strong); }
     margin-bottom: 14px;
 }
 
+.chat-launcher {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(14,165,233,0.4);
+    background: rgba(14,165,233,0.15);
+    color: var(--text);
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    z-index: 20;
+    transition: transform 0.12s ease, background 0.12s ease;
+}
+.chat-launcher:hover { transform: translateY(-1px); background: rgba(14,165,233,0.25); }
+
+.chat-widget {
+    position: fixed;
+    right: 18px;
+    bottom: 82px;
+    width: 320px;
+    max-height: 480px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 20;
+}
+.chat-widget.open { display: flex; }
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+}
+.chat-messages {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.chat-form {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    border-top: 1px solid var(--border);
+    background: #0b1221;
+}
+.chat-form input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #0d1426;
+    color: var(--text);
+}
+.chat-message .author { margin: 0 0 4px; color: var(--muted); font-size: 12px; }
+.chat-message .bubble {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #111827;
+}
+.chat-message.me .bubble { border-color: rgba(14,165,233,0.35); }
+.chat-message.bot .bubble { border-color: rgba(6,182,212,0.25); }
+.btn.small { padding: 6px 10px; font-size: 12px; }
+
 @media (max-width: 720px) {
     .topbar { flex-direction: column; align-items: flex-start; gap: 8px; }
     .container { padding: 22px 16px 48px; }
     .hero { padding: 20px; }
+    .chat-widget { right: 12px; left: 12px; width: auto; }
 }

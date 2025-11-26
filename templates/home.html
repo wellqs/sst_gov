@@ -24,4 +24,73 @@
         <p>Nenhum modulo configurado.</p>
     {% endfor %}
 </section>
+
+<div id="chat-widget" class="chat-widget">
+    <div class="chat-header">
+        <div>
+            <p class="eyebrow">Assistente SST</p>
+            <strong>Precisa de ajuda?</strong>
+        </div>
+        <button id="chat-toggle" class="btn small">Fechar</button>
+    </div>
+    <div id="chat-messages" class="chat-messages"></div>
+    <form id="chat-form" class="chat-form">
+        <input type="text" id="chat-input" name="message" placeholder="Pergunte sobre NRs ou módulos..." autocomplete="off" />
+        <button type="submit" class="btn primary">Enviar</button>
+    </form>
+</div>
+<button id="chat-launcher" class="chat-launcher">Assistente</button>
+
+<script>
+    (function() {
+        const widget = document.getElementById('chat-widget');
+        const launcher = document.getElementById('chat-launcher');
+        const toggle = document.getElementById('chat-toggle');
+        const form = document.getElementById('chat-form');
+        const input = document.getElementById('chat-input');
+        const messages = document.getElementById('chat-messages');
+
+        const csrftoken = document.cookie.split(';').find(c => c.trim().startsWith('csrftoken='))?.split('=')[1];
+
+        function appendMessage(author, text) {
+            const el = document.createElement('div');
+            el.className = 'chat-message ' + (author === 'Você' ? 'me' : 'bot');
+            el.innerHTML = `<p class="author">${author}</p><div class="bubble">${text}</div>`;
+            messages.appendChild(el);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        launcher.addEventListener('click', () => widget.classList.add('open'));
+        toggle.addEventListener('click', () => widget.classList.remove('open'));
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const text = input.value.trim();
+            if (!text) return;
+            appendMessage('Você', text);
+            input.value = '';
+            appendMessage('Assistente', 'Pensando...');
+            try {
+                const res = await fetch("{% url 'chat_api' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken || ''
+                    },
+                    body: JSON.stringify({ message: text })
+                });
+                const data = await res.json();
+                messages.lastChild.remove(); // remove placeholder
+                if (data.answer) {
+                    appendMessage('Assistente', data.answer);
+                } else {
+                    appendMessage('Assistente', data.error || 'Não foi possível responder agora.');
+                }
+            } catch (err) {
+                messages.lastChild.remove();
+                appendMessage('Assistente', 'Erro ao consultar a IA.');
+            }
+        });
+    })();
+</script>
 {% endblock %}

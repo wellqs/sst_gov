@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path("", views.home, name="home"),
     path("health/", views.healthcheck, name="healthcheck"),
+    path("api/chat/", views.chat_api, name="chat_api"),
     path(
         "login/",
         auth_views.LoginView.as_view(template_name="registration/login.html"),
