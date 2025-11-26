@@ -14,9 +14,9 @@ def home(request):
     modules = [
         {"name": "Acidentes", "slug": "acidentes", "description": "Registros CAT e S-2210"},
         {"name": "EPI", "slug": "epi", "description": "Controle de EPIs e entregas"},
-        {"name": "Exames", "slug": "exames", "description": "Gestao de exames S-2220"},
-        {"name": "Inspecoes", "slug": "inspecoes", "description": "Nao conformidades e planos"},
+        {"name": "Exames", "slug": "exames", "description": "Gestão de exames S-2220"},
+        {"name": "Inspeções", "slug": "inspecoes", "description": "Não conformidades e planos"},
         {"name": "Treinamentos", "slug": "treinamentos", "description": "Turmas, certificados e validade"},
-        {"name": "Relatorios", "slug": "relatorios", "description": "PDFs e indicadores"},
+        {"name": "Relatórios", "slug": "relatorios", "description": "PDFs e indicadores"},
     ]
     return render(request, "home.html", {"modules": modules})
