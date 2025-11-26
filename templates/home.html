@@ -12,7 +12,7 @@
 <section class="grid">
     {% for module in modules %}
         <article class="card">
-            <a class="card-link" href="#{{ module.slug }}">
+            <a class="card-link" href="{{ module.url|default:'#' }}">
                 <div class="card-body">
                     <p class="card-eyebrow">{{ module.slug }}</p>
                     <h2>{{ module.name }}</h2>
