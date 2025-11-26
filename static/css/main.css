@@ -38,6 +38,8 @@ a:hover { color: var(--accent-strong); }
     z-index: 10;
 }
 .brand { display: flex; flex-direction: column; gap: 4px; }
+.brand-link { color: var(--text); text-decoration: none; transition: color 0.12s ease, transform 0.12s ease; }
+.brand-link:hover { color: var(--accent-strong); transform: translateY(-1px); }
 .logo { font-weight: 700; letter-spacing: 0.5px; }
 .subtitle { font-size: 12px; color: var(--muted); }
 .user-actions { display: flex; align-items: center; gap: 16px; }
