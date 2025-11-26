@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SST GOV{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        <span class="logo">SST_GOV</span>
+        <span class="subtitle">Seguranca e Saude do Trabalhador</span>
+    </div>
+    {% if request.user.is_authenticated %}
+        <div class="user-actions">
+            <span class="welcome">Ola, {{ request.user.get_short_name|default:request.user.username }}</span>
+            <a class="link" href="{% url 'logout' %}">Sair</a>
+        </div>
+    {% endif %}
+</header>
+
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

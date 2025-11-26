@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Inicio · SST GOV{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Painel inicial</p>
+        <h1>SST GOV</h1>
+        <p class="lead">Centralize acidentes, EPIs, exames, inspeções e treinamentos em um unico lugar.</p>
+    </div>
+</section>
+
+<section class="grid">
+    {% for module in modules %}
+        <article class="card">
+            <a class="card-link" href="#{{ module.slug }}">
+                <div class="card-body">
+                    <p class="card-eyebrow">{{ module.slug }}</p>
+                    <h2>{{ module.name }}</h2>
+                    <p class="card-text">{{ module.description }}</p>
+                </div>
+            </a>
+        </article>
+    {% empty %}
+        <p>Nenhum modulo configurado.</p>
+    {% endfor %}
+</section>
+{% endblock %}
