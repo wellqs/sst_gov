@@ -1,23 +1,23 @@
-Nome;CA;Validade CA;Categoria;Tamanho
-Calçado de segurança (branco);45000;2027-06-30;Proteção dos pés;38-44
-Calçado de segurança (preto);45001;2027-06-30;Proteção dos pés;38-44
-Cinto abdominal ergonômico;55010;2026-04-12;Ergonomia / proteção lombar;P / M / G
-Óculos de segurança incolor;34500;2026-09-15;Proteção ocular;Único
-Óculos de segurança escuro;34501;2026-09-15;Proteção ocular;Único
-Luva nitrílica;48020;2025-12-10;Proteção das mãos (produtos químicos);P / M / G
-Avental impermeável;61000;2026-11-01;Proteção do tronco e membros;Único
-Avental de vinil com manga longa;61001;2026-11-01;Proteção do tronco e membros;Único
-Máscara semifacial com filtro;32000;2027-02-28;Proteção respiratória;Único
-Filtro para máscara semifacial;32001;2027-02-28;Proteção respiratória;Único
-Luva resistente a agentes mecânicos;42092;2026-08-20;Proteção das mãos (agentes mecânicos);M / G / GG
-Protetor auditivo tipo concha (preto);5674;2026-11-15;Proteção auditiva;Ajustável
-Luva pigmentada;41000;2026-01-10;Proteção das mãos;M / G / GG
-Calçado tipo botina c/ biqueira de PVC;45010;2027-06-30;Proteção dos pés;38-44
-Luva de vaqueta;43000;2025-10-05;Proteção das mãos;Único
-Capacete de segurança;29792;2026-05-30;Proteção da cabeça;Ajustável
-Protetor auditivo tipo plug;32010;2026-12-30;Proteção auditiva;Único
-Bota de PVC;45020;2027-05-12;Proteção dos pés;38-44
-Protetor de tireoide;70001;2027-03-01;Proteção radiológica;Único
-Protetor de gônadas;70002;2027-03-01;Proteção radiológica;Único
-Avental plumbífero;70010;2027-03-01;Proteção radiológica;P / M / G
-Luva plumbífera;70011;2027-03-01;Proteção radiológica;Único
+Nome,CA,Validade CA,Categoria,Tamanho
+Calçado de segurança (branco),45000,2027-06-30,Proteção dos pés,38–44
+Calçado de segurança (preto),45001,2027-06-30,Proteção dos pés,38–44
+Cinturão abdominal ergonômico,55010,2026-04-12,Ergonomia / proteção lombar,P / M / G
+Óculos de segurança incolor,34500,2026-09-15,Proteção ocular,Único
+Óculos de segurança escuro,34501,2026-09-15,Proteção ocular,Único
+Luva nitrílica,48020,2025-12-10,Proteção das mãos (produtos químicos),P / M / G
+Avental impermeável,61000,2026-11-01,Proteção do tronco e membros,Único
+Avental de vinil com manga longa,61001,2026-11-01,Proteção do tronco e membros,Único
+Máscara semi facial com filtro,32000,2027-02-28,Proteção respiratória,Único
+Filtro para máscara semi facial,32001,2027-02-28,Proteção respiratória,Único
+Luva resistente a agentes mecânicos,42092,2026-08-20,Proteção das mãos (agentes mecânicos),M / G / GG
+Protetor auditivo tipo concha (preto),5674,2026-11-15,Proteção auditiva,Ajustável
+Luva pigmentada,41000,2026-01-10,Proteção das mãos,M / G / GG
+Calçado tipo botina c/ biqueira de PVC,45010,2027-06-30,Proteção dos pés,38–44
+Luva de vaqueta,43000,2025-10-05,Proteção das mãos,Único
+Capacete de segurança,29792,2026-05-30,Proteção da cabeça,Ajustável
+Protetor auditivo tipo plug,32010,2026-12-30,Proteção auditiva,Único
+Bota de PVC,45020,2027-05-12,Proteção dos pés,38–44
+Protetor de tireóide,70001,2027-03-01,Proteção radiológica,Único
+Protetor de gônadas,70002,2027-03-01,Proteção radiológica,Único
+Avental plumbífero,70010,2027-03-01,Proteção radiológica,P / M / G
+Luva plumbífera,70011,2027-03-01,Proteção radiológica,Único
