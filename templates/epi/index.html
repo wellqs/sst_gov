@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}EPI{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">NR-06</p>
+        <h1>EPIs</h1>
+        <p class="lead">Controle de catálogo, CAs e entregas aos servidores.</p>
+    </div>
+    <div class="hero-actions">
+        <a class="btn" href="{% url 'epi:listar' %}">Ver entregas</a>
+        <a class="btn primary" href="{% url 'epi:entrega_nova' %}">Nova entrega</a>
+    </div>
+</section>
+
+<section class="grid stats">
+    <article class="card">
+        <div class="card-body">
+            <p class="card-eyebrow">EPIs ativos</p>
+            <h2>{{ total_epi }}</h2>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-body">
+            <p class="card-eyebrow">Entregas</p>
+            <h2>{{ total_entregas }}</h2>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-body">
+            <p class="card-eyebrow">CA vencido</p>
+            <h2>{{ vencidos }}</h2>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-body">
+            <p class="card-eyebrow">CA vencendo em 30d</p>
+            <h2>{{ em_breve }}</h2>
+        </div>
+    </article>
+</section>
+
+<section class="list">
+    <div class="list-header">
+        <p class="eyebrow">Ultimas entregas</p>
+        <a class="link" href="{% url 'epi:listar' %}">Ver todas</a>
+    </div>
+    {% for entrega in ultimas_entregas %}
+        <a class="list-item" href="{% url 'epi:entrega_detalhe' entrega.pk %}">
+            <div>
+                <p class="card-eyebrow">{{ entrega.epi }} • {{ entrega.get_status_display }}</p>
+                <h3>{{ entrega.servidor }}</h3>
+                <p class="card-text">{{ entrega.observacoes|default:"-" }}</p>
+            </div>
+            <div class="list-meta">
+                <small>Entregue em {{ entrega.data_entrega|date:"d/m/Y" }}</small>
+                <small>Validade: {{ entrega.data_validade|date:"d/m/Y"|default:"-" }}</small>
+                <small>Qtd: {{ entrega.quantidade }}</small>
+            </div>
+        </a>
+    {% empty %}
+        <p>Nenhuma entrega registrada.</p>
+    {% endfor %}
+</section>
+{% endblock %}

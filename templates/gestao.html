@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Gestao{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Cadastros</p>
+        <h1>Gestao</h1>
+        <p class="lead">Atalhos para manter servidores, unidades, setores, cargos e EPIs atualizados.</p>
+    </div>
+</section>
+
+<section class="grid">
+    {% for card in cards %}
+        <article class="card">
+            <a class="card-link" href="{{ card.url }}">
+                <div class="card-body">
+                    <p class="card-eyebrow">{{ card.title }}</p>
+                    <h2>{{ card.title }}</h2>
+                    <p class="card-text">{{ card.desc }}</p>
+                </div>
+            </a>
+        </article>
+    {% endfor %}
+</section>
+{% endblock %}

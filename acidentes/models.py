@@ -3,14 +3,21 @@ from django.db import models
 
 from core.models import Servidor, Setor, Unidade, TimeStampedModel
 
+# Choices reaproveitados em filtros/forms
+ACIDENTE_STATUS_CHOICES = [
+    ("ABERTO", "Aberto"),
+    ("EM_ANALISE", "Em analise"),
+    ("ENCERRADO", "Encerrado"),
+]
+
 
 class Acidente(TimeStampedModel):
-    """Registro de acidente/doença ocupacional (S-2210)."""
+    """Registro de acidente/doenca ocupacional (S-2210)."""
 
     TIPO_CHOICES = [
-        ("TIPO_ACIDENTE", "Acidente típico"),
+        ("TIPO_ACIDENTE", "Acidente tipico"),
         ("TRAJETO", "Acidente de trajeto"),
-        ("DOENCA", "Doença ocupacional"),
+        ("DOENCA", "Doenca ocupacional"),
     ]
     GRAVIDADE_CHOICES = [
         ("LEVE", "Leve"),
@@ -18,11 +25,7 @@ class Acidente(TimeStampedModel):
         ("GRAVE", "Grave"),
         ("IMINENTE", "Grave com risco iminente"),
     ]
-    STATUS_CHOICES = [
-        ("ABERTO", "Aberto"),
-        ("EM_ANALISE", "Em análise"),
-        ("ENCERRADO", "Encerrado"),
-    ]
+    STATUS_CHOICES = ACIDENTE_STATUS_CHOICES
 
     servidor = models.ForeignKey(Servidor, on_delete=models.PROTECT, related_name="acidentes")
     unidade = models.ForeignKey(Unidade, on_delete=models.PROTECT, related_name="acidentes")
@@ -47,10 +50,10 @@ class Acidente(TimeStampedModel):
 
 
 class CAT(TimeStampedModel):
-    """Comunicação de Acidente de Trabalho vinculada ao acidente."""
+    """Comunicacao de Acidente de Trabalho vinculada ao acidente."""
 
     STATUS_CAT = [
-        ("NAO_ENVIADA", "Não enviada"),
+        ("NAO_ENVIADA", "Nao enviada"),
         ("ENVIADA", "Enviada"),
         ("CANCELADA", "Cancelada"),
     ]

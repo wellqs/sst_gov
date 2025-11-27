@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Cargos{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Gestao</p>
+        <h1>Cargos</h1>
+        <p class="lead">Cadastre cargos e CBO.</p>
+    </div>
+    <div class="hero-actions">
+        <a class="btn primary" href="{% url 'gestao_cargo_novo' %}">Novo cargo</a>
+    </div>
+</section>
+
+<section class="list">
+    {% for cargo in cargos %}
+        <a class="list-item" href="{% url 'gestao_cargo_editar' cargo.pk %}">
+            <div>
+                <p class="card-eyebrow">CBO {{ cargo.cbo|default:"-" }}</p>
+                <h3>{{ cargo.titulo }}</h3>
+                <p class="card-text">{{ cargo.descricao|default:"" }}</p>
+            </div>
+            <div class="list-meta">
+                <span class="pill">{{ cargo.ativo|yesno:"Ativo,Inativo" }}</span>
+            </div>
+        </a>
+    {% empty %}
+        <p>Nenhum cargo cadastrado.</p>
+    {% endfor %}
+</section>
+{% endblock %}

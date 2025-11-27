@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Catálogo de EPI{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">NR-06</p>
+        <h1>EPIs</h1>
+        <p class="lead">Cadastre e edite EPIs.</p>
+    </div>
+    <div class="hero-actions">
+        <a class="btn primary" href="{% url 'epi:catalogo_novo' %}">Novo EPI</a>
+    </div>
+</section>
+
+<section class="list">
+    {% for epi in epis %}
+        <a class="list-item" href="{% url 'epi:catalogo_editar' epi.pk %}">
+            <div>
+                <p class="card-eyebrow">CA {{ epi.ca|default:"-" }}</p>
+                <h3>{{ epi.nome }}</h3>
+                <p class="card-text">{{ epi.categoria|default:"" }}</p>
+            </div>
+            <div class="list-meta">
+                <span class="pill">{{ epi.ativo|yesno:"Ativo,Inativo" }}</span>
+                <small>Validade CA: {{ epi.validade_ca|date:"d/m/Y"|default:"-" }}</small>
+                <small>Tamanho: {{ epi.tamanho|default:"-" }}</small>
+            </div>
+        </a>
+    {% empty %}
+        <p>Nenhum EPI cadastrado.</p>
+    {% endfor %}
+</section>
+{% endblock %}

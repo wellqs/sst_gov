@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Setores{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Gestao</p>
+        <h1>Setores</h1>
+        <p class="lead">Cadastre setores vinculados a uma unidade.</p>
+    </div>
+    <div class="hero-actions">
+        <a class="btn primary" href="{% url 'gestao_setor_novo' %}">Novo setor</a>
+    </div>
+</section>
+
+<section class="list">
+    {% for setor in setores %}
+        <a class="list-item" href="{% url 'gestao_setor_editar' setor.pk %}">
+            <div>
+                <p class="card-eyebrow">{{ setor.unidade }}</p>
+                <h3>{{ setor.nome }}</h3>
+                <p class="card-text">{{ setor.descricao|default:"" }}</p>
+            </div>
+            <div class="list-meta">
+                <span class="pill">{{ setor.ativa|yesno:"Ativo,Inativo" }}</span>
+                <small>{{ setor.codigo|default:"" }}</small>
+            </div>
+        </a>
+    {% empty %}
+        <p>Nenhum setor cadastrado.</p>
+    {% endfor %}
+</section>
+{% endblock %}

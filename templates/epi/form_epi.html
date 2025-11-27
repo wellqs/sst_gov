@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Cadastro de EPI{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">NR-06</p>
+        <h1>Cadastro de EPI</h1>
+        <p class="lead">Preencha os dados do equipamento.</p>
+    </div>
+</section>
+
+<section class="form-card">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-grid">
+            {% for field in form %}
+                <div class="field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}<small class="help">{{ field.help_text }}</small>{% endif %}
+                    {% for error in field.errors %}
+                        <div class="alert">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <button class="btn primary" type="submit">Salvar</button>
+    </form>
+</section>
+{% endblock %}

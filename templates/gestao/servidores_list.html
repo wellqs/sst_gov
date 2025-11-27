@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Servidores{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Gestao</p>
+        <h1>Servidores</h1>
+        <p class="lead">Cadastre e edite servidores.</p>
+    </div>
+    <div class="hero-actions">
+        <a class="btn primary" href="{% url 'gestao_servidor_novo' %}">Novo servidor</a>
+    </div>
+</section>
+
+<section class="list">
+    {% for servidor in servidores %}
+        <a class="list-item" href="{% url 'gestao_servidor_editar' servidor.pk %}">
+            <div>
+                <p class="card-eyebrow">{{ servidor.unidade }} / {{ servidor.setor }}</p>
+                <h3>{{ servidor.nome }}</h3>
+                <p class="card-text">{{ servidor.cargo }}</p>
+            </div>
+            <div class="list-meta">
+                <span class="pill">{{ servidor.ativo|yesno:"Ativo,Inativo" }}</span>
+                <small>{{ servidor.matricula }}</small>
+                <small>{{ servidor.cpf }}</small>
+            </div>
+        </a>
+    {% empty %}
+        <p>Nenhum servidor cadastrado.</p>
+    {% endfor %}
+</section>
+{% endblock %}

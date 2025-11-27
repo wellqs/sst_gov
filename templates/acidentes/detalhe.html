@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Acidente{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">S-2210</p>
+        <h1>{{ acidente.servidor }} • {{ acidente.get_tipo_display }}</h1>
+        <p class="lead">{{ acidente.get_gravidade_display }} — {{ acidente.data_ocorrencia|date:"d/m/Y H:i" }} — {{ acidente.unidade }} / {{ acidente.setor }}</p>
+    </div>
+    <div class="hero-actions">
+        <a class="btn" href="{% url 'acidentes:editar' acidente.pk %}">Editar</a>
+        <a class="btn primary" href="{% url 'acidentes:cat' acidente.pk %}">{{ cat|yesno:"Editar CAT,Nova CAT" }}</a>
+    </div>
+</section>
+
+<section class="card">
+    <div class="card-body">
+        <p class="card-eyebrow">Descricao</p>
+        <p class="card-text">{{ acidente.descricao }}</p>
+        <p class="card-eyebrow">Local</p>
+        <p class="card-text">{{ acidente.local|default:"-" }}</p>
+        <p class="card-eyebrow">Testemunhas</p>
+        <p class="card-text">{{ acidente.testemunhas|default:"-" }}</p>
+        <p class="card-eyebrow">Afastamento</p>
+        <p class="card-text">
+            {% if acidente.houve_afastamento %}Sim{% else %}Nao{% endif %}
+            {% if acidente.dias_afastamento %} ({{ acidente.dias_afastamento }} dias){% endif %}
+        </p>
+    </div>
+</section>
+
+{% if cat %}
+<section class="card">
+    <div class="card-body">
+        <p class="card-eyebrow">CAT</p>
+        <p class="card-text">Numero: {{ cat.numero|default:"-" }}</p>
+        <p class="card-text">Status: {{ cat.get_status_display }}</p>
+        <p class="card-text">Data emissao: {{ cat.data_emissao|date:"d/m/Y"|default:"-" }}</p>
+        <p class="card-text">Responsavel: {{ cat.responsavel_emissao|default:"-" }}</p>
+        <p class="card-text">Obs: {{ cat.observacoes|default:"-" }}</p>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

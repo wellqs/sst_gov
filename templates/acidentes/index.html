@@ -5,23 +5,61 @@
     <div>
         <p class="eyebrow">S-2210</p>
         <h1>Acidentes e CAT</h1>
-        <p class="lead">Registre ocorrências, emita CAT e acompanhe status.</p>
+        <p class="lead">Registre ocorrencias, emita CAT e acompanhe status.</p>
+    </div>
+    <div class="hero-actions">
+        <a class="btn" href="{% url 'acidentes:listar' %}">Ver lista</a>
+        <a class="btn primary" href="{% url 'acidentes:novo' %}">Novo acidente</a>
     </div>
 </section>
-<section class="grid">
+
+<section class="grid stats">
     <article class="card">
         <div class="card-body">
-            <p class="card-eyebrow">Fluxo</p>
-            <h2>Cadastro</h2>
-            <p class="card-text">Crie acidentes, informe gravidade, afastamento e comunique via CAT.</p>
+            <p class="card-eyebrow">Abertos</p>
+            <h2>{{ stats.abertos }}</h2>
         </div>
     </article>
     <article class="card">
         <div class="card-body">
-            <p class="card-eyebrow">Próximo passo</p>
-            <h2>Listagens</h2>
-            <p class="card-text">Implementar listagem e filtros por unidade, setor, gravidade e status.</p>
+            <p class="card-eyebrow">Em analise</p>
+            <h2>{{ stats.analise }}</h2>
         </div>
     </article>
+    <article class="card">
+        <div class="card-body">
+            <p class="card-eyebrow">Encerrados</p>
+            <h2>{{ stats.encerrados }}</h2>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-body">
+            <p class="card-eyebrow">Total</p>
+            <h2>{{ stats.total }}</h2>
+        </div>
+    </article>
+</section>
+
+<section class="list">
+    <div class="list-header">
+        <p class="eyebrow">Ultimos registros</p>
+        <a class="link" href="{% url 'acidentes:listar' %}">Ver todos</a>
+    </div>
+    {% for acidente in recentes %}
+        <a class="list-item" href="{% url 'acidentes:detalhe' acidente.pk %}">
+            <div>
+                <p class="card-eyebrow">{{ acidente.get_tipo_display }} • {{ acidente.get_gravidade_display }}</p>
+                <h3>{{ acidente.servidor }}</h3>
+                <p class="card-text">{{ acidente.descricao|truncatechars:120 }}</p>
+            </div>
+            <div class="list-meta">
+                <span class="pill">{{ acidente.get_status_display }}</span>
+                <small>{{ acidente.data_ocorrencia|date:"d/m/Y H:i" }}</small>
+                <small>{{ acidente.unidade }} / {{ acidente.setor }}</small>
+            </div>
+        </a>
+    {% empty %}
+        <p>Nenhum acidente registrado ainda.</p>
+    {% endfor %}
 </section>
 {% endblock %}

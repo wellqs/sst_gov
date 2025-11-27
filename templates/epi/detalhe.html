@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Entrega de EPI{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">NR-06</p>
+        <h1>{{ entrega.epi }}</h1>
+        <p class="lead">{{ entrega.servidor }} • Entrega em {{ entrega.data_entrega|date:"d/m/Y" }}</p>
+    </div>
+    <div class="hero-actions">
+        <a class="btn" href="{% url 'epi:entrega_editar' entrega.pk %}">Editar</a>
+        <a class="btn" href="{% url 'epi:listar' %}">Voltar</a>
+    </div>
+</section>
+
+<section class="card">
+    <div class="card-body">
+        <p class="card-eyebrow">Status</p>
+        <p class="card-text">{{ entrega.get_status_display }}</p>
+        <p class="card-eyebrow">Quantidade</p>
+        <p class="card-text">{{ entrega.quantidade }}</p>
+        <p class="card-eyebrow">Validade do EPI entregue</p>
+        <p class="card-text">{{ entrega.data_validade|date:"d/m/Y"|default:"-" }}</p>
+        <p class="card-eyebrow">Observacoes</p>
+        <p class="card-text">{{ entrega.observacoes|default:"-" }}</p>
+    </div>
+</section>
+{% endblock %}

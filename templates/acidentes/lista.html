@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Acidentes{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">S-2210</p>
+        <h1>Acidentes</h1>
+        <p class="lead">Filtre por status e gravidade. Clique para ver detalhes e CAT.</p>
+    </div>
+    <div class="hero-actions">
+        <a class="btn primary" href="{% url 'acidentes:novo' %}">Novo acidente</a>
+    </div>
+</section>
+
+<form class="filters" method="get">
+    <label>
+        Status
+        <select name="status" onchange="this.form.submit()">
+            <option value="">Todos</option>
+            {% for val, label in status_choices %}
+                <option value="{{ val }}" {% if filtro_status == val %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>
+        Gravidade
+        <select name="gravidade" onchange="this.form.submit()">
+            <option value="">Todas</option>
+            {% for val, label in gravidade_choices %}
+                <option value="{{ val }}" {% if filtro_gravidade == val %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </label>
+</form>
+
+<section class="list">
+    {% for acidente in acidentes %}
+        <a class="list-item" href="{% url 'acidentes:detalhe' acidente.pk %}">
+            <div>
+                <p class="card-eyebrow">{{ acidente.get_tipo_display }} • {{ acidente.get_gravidade_display }}</p>
+                <h3>{{ acidente.servidor }}</h3>
+                <p class="card-text">{{ acidente.descricao|truncatechars:120 }}</p>
+            </div>
+            <div class="list-meta">
+                <span class="pill">{{ acidente.get_status_display }}</span>
+                <small>{{ acidente.data_ocorrencia|date:"d/m/Y H:i" }}</small>
+                <small>{{ acidente.unidade }} / {{ acidente.setor }}</small>
+            </div>
+        </a>
+    {% empty %}
+        <p>Nenhum acidente registrado.</p>
+    {% endfor %}
+</section>
+{% endblock %}

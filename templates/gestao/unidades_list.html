@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Unidades{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Gestao</p>
+        <h1>Unidades</h1>
+        <p class="lead">Cadastre unidades/secretarias.</p>
+    </div>
+    <div class="hero-actions">
+        <a class="btn primary" href="{% url 'gestao_unidade_nova' %}">Nova unidade</a>
+    </div>
+</section>
+
+<section class="list">
+    {% for unidade in unidades %}
+        <a class="list-item" href="{% url 'gestao_unidade_editar' unidade.pk %}">
+            <div>
+                <p class="card-eyebrow">{{ unidade.sigla|default:"Unidade" }}</p>
+                <h3>{{ unidade.nome }}</h3>
+                <p class="card-text">{{ unidade.descricao|default:"" }}</p>
+            </div>
+            <div class="list-meta">
+                <span class="pill">{{ unidade.ativa|yesno:"Ativa,Inativa" }}</span>
+                <small>{{ unidade.cidade }} {{ unidade.uf }}</small>
+            </div>
+        </a>
+    {% empty %}
+        <p>Nenhuma unidade cadastrada.</p>
+    {% endfor %}
+</section>
+{% endblock %}
