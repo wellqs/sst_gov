@@ -1,0 +1,35 @@
+Unidade,Nome,Codigo,Descricao,Ativa
+HT,Direção Geral,HT-001,Administração central e governança do hospital.,True
+HT,Diretoria Administrativa,HT-002,"Gestão administrativa, financeira e logística da unidade.",True
+HT,Diretoria Clínica,HT-003,Coordenação e supervisão dos serviços médicos.,True
+HT,Gerência de Enfermagem,HT-004,Gestão da equipe e processos assistenciais de enfermagem.,True
+HT,SESMT,HT-005,"Saúde e segurança ocupacional, prevenção de riscos.",True
+HT,Recepção,HT-006,"Cadastro, atendimento inicial e fluxo de entrada de pacientes.",True
+HT,NIR - Núcleo Interno de Regulação,HT-007,"Regulação interna de leitos, internações e consultas.",True
+HT,Ambulatório,HT-008,Consultas médicas e atendimentos ambulatoriais.,True
+HT,Clínica Médica,HT-009,"Internação para cuidados clínicos de baixa e média complexidade.",True
+HT,Clínica Cirúrgica,HT-010,Internação para pacientes pré e pós-operatórios.,True
+HT,Pediatria,HT-011,Unidade de internação e observação pediátrica.,True
+HT,UTI Geral,HT-012,Cuidado intensivo de pacientes em estado grave.,True
+HT,Sala de Estabilização,HT-013,Estabilização de pacientes críticos antes da internação.,True
+HT,Laboratório de Análises Clínicas,HT-014,"Coleta, análises e processamento de exames laboratoriais.",True
+HT,Raio-X / Imagem,HT-015,"Exames de imagem, como radiologia e ultrassonografia.",True
+HT,Farmácia,HT-016,Armazenamento e distribuição de medicamentos e insumos.,True
+HT,CME - Central de Material e Esterilização,HT-017,Esterilização e distribuição de materiais médico-hospitalares.,True
+HT,Almoxarifado,HT-018,"Controle, armazenamento e distribuição de materiais.",True
+HT,Nutrição / Cozinha,HT-019,Preparo e distribuição de refeições e dietas.,True
+HT,Serviço Social,HT-020,Apoio social e articulação com a rede socioassistencial.,True
+HT,Psicologia,HT-021,Acolhimento psicológico de pacientes e colaboradores.,True
+HT,Fisioterapia,HT-022,Atendimento fisioterapêutico motor e respiratório.,True
+HT,Higienização e Limpeza,HT-023,"Limpeza, desinfecção e sanitização da unidade.",True
+HT,Lavanderia,HT-024,"Processamento de roupas, enxoval e EPIs.",True
+HT,Engenharia Clínica,HT-025,Gestão e manutenção de equipamentos médico-hospitalares.,True
+HT,Manutenção Predial,HT-026,"Manutenção elétrica, hidráulica e civil da infraestrutura.",True
+HT,TI - Tecnologia da Informação,HT-027,"Suporte técnico, redes e sistemas informatizados.",True
+HT,Segurança Patrimonial,HT-028,Vigilância e controle de acesso à unidade.,True
+HT,Ouvidoria,HT-029,"Atendimento a reclamações, elogios e sugestões.",True
+HT,Faturamento,HT-030,"Processamento de contas, autorizações e cobranças.",True
+HT,Contabilidade,HT-031,Gestão contábil e orçamentária.,True
+HT,Recursos Humanos,HT-032,"Gestão de pessoal, capacitação e folha de pagamento.",True
+HT,Compras,HT-033,"Aquisição de materiais, insumos e serviços.",True
+HT,Administrativo,HT-034,Apoio administrativo geral a todos os setores.,True
