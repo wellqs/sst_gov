@@ -37,8 +37,20 @@ def home(request):
         {"name": "EPI", "slug": "NR-06", "description": "Controle de EPIs e entregas", "url": reverse("epi:index")},
         {"name": "Exames", "slug": "S-2220", "description": "Gestão de exames S-2220", "url": reverse("exames:index")},
         {"name": "Relatórios", "slug": "Dashboards", "description": "PDFs e indicadores", "url": reverse("relatorios")},
-        {"name": "Inspeções", "slug": "Checklists", "description": "Não conformidades e planos", "url": None},
-        {"name": "Treinamentos", "slug": "Cursos", "description": "Turmas, certificados e validade", "url": None},
+        {
+            "name": "Inspeções",
+            "slug": "Checklists",
+            "description": "Não conformidades e planos",
+            "url": None,
+            "disabled": True,
+        },
+        {
+            "name": "Treinamentos",
+            "slug": "Cursos",
+            "description": "Turmas, certificados e validade",
+            "url": None,
+            "disabled": True,
+        },
     ]
     return render(request, "home.html", {"modules": modules})
 

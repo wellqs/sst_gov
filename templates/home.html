@@ -11,8 +11,8 @@
 
 <section class="grid">
     {% for module in modules %}
-        <article class="card {% if not module.url %}card-disabled{% endif %}">
-            {% if module.url %}
+        <article class="card {% if module.disabled or not module.url %}card-disabled{% endif %}">
+            {% if module.url and not module.disabled %}
                 <a class="card-link" href="{{ module.url }}">
                     <div class="card-body">
                         <p class="card-eyebrow">{{ module.slug }}</p>
