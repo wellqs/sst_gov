@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Relatórios{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Dashboards</p>
+        <h1>Relatórios</h1>
+    </div>
+</section>
+
+<section class="grid">
+    {% for report in reports %}
+        <article class="card">
+            <a class="card-link" href="{{ report.url }}">
+                <div class="card-body">
+                    <p class="card-eyebrow">{{ report.title }}</p>
+                    <h2>{{ report.title }}</h2>
+                    <p class="card-text">{{ report.desc }}</p>
+                </div>
+                <div class="card-footer">
+                    <span class="link">{{ report.cta }}</span>
+                </div>
+            </a>
+        </article>
+    {% empty %}
+        <p>Nenhum relatório configurado.</p>
+    {% endfor %}
+</section>
+{% endblock %}

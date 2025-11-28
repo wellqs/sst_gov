@@ -42,13 +42,13 @@
 
 <section class="list">
     <div class="list-header">
-        <p class="eyebrow">Ultimas entregas</p>
+        <p class="eyebrow">Últimas entregas</p>
         <a class="link" href="{% url 'epi:listar' %}">Ver todas</a>
     </div>
     {% for entrega in ultimas_entregas %}
         <a class="list-item" href="{% url 'epi:entrega_detalhe' entrega.pk %}">
             <div>
-                <p class="card-eyebrow">{{ entrega.epi }} • {{ entrega.get_status_display }}</p>
+                <p class="card-eyebrow">{{ entrega.epi }} - {{ entrega.get_status_display }}</p>
                 <h3>{{ entrega.servidor }}</h3>
                 <p class="card-text">{{ entrega.observacoes|default:"-" }}</p>
             </div>

@@ -37,7 +37,7 @@
     {% for acidente in acidentes %}
         <a class="list-item" href="{% url 'acidentes:detalhe' acidente.pk %}">
             <div>
-                <p class="card-eyebrow">{{ acidente.get_tipo_display }} • {{ acidente.get_gravidade_display }}</p>
+                <p class="card-eyebrow">{{ acidente.get_tipo_display }} - {{ acidente.get_gravidade_display }}</p>
                 <h3>{{ acidente.servidor }}</h3>
                 <p class="card-text">{{ acidente.descricao|truncatechars:120 }}</p>
             </div>

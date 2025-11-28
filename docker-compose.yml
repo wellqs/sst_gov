@@ -14,22 +14,24 @@ services:
       - db
 
   db:
-    image: postgres:16-alpine
+    image: mysql:8.0
     container_name: sst_gov_db
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-sst_gov}
-      POSTGRES_USER: ${POSTGRES_USER:-sst_gov}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sst_gov}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-sst_gov}
+      MYSQL_USER: ${MYSQL_USER:-sst_gov}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-sst_gov}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     ports:
-      - "5433:5432"
+      - "3308:3306"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sst_gov} -d ${POSTGRES_DB:-sst_gov}"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u${MYSQL_USER:-sst_gov} -p${MYSQL_PASSWORD:-sst_gov}"]
       interval: 10s
       timeout: 5s
       retries: 5
 
 volumes:
-  postgres_data:
+  mysql_data:

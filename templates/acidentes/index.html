@@ -5,7 +5,7 @@
     <div>
         <p class="eyebrow">S-2210</p>
         <h1>Acidentes e CAT</h1>
-        <p class="lead">Registre ocorrencias, emita CAT e acompanhe status.</p>
+        <p class="lead">Registre ocorrências, emita CAT e acompanhe status.</p>
     </div>
     <div class="hero-actions">
         <a class="btn" href="{% url 'acidentes:listar' %}">Ver lista</a>
@@ -22,7 +22,7 @@
     </article>
     <article class="card">
         <div class="card-body">
-            <p class="card-eyebrow">Em analise</p>
+            <p class="card-eyebrow">Em análise</p>
             <h2>{{ stats.analise }}</h2>
         </div>
     </article>
@@ -42,13 +42,13 @@
 
 <section class="list">
     <div class="list-header">
-        <p class="eyebrow">Ultimos registros</p>
+        <p class="eyebrow">Últimos registros</p>
         <a class="link" href="{% url 'acidentes:listar' %}">Ver todos</a>
     </div>
     {% for acidente in recentes %}
         <a class="list-item" href="{% url 'acidentes:detalhe' acidente.pk %}">
             <div>
-                <p class="card-eyebrow">{{ acidente.get_tipo_display }} • {{ acidente.get_gravidade_display }}</p>
+                <p class="card-eyebrow">{{ acidente.get_tipo_display }} - {{ acidente.get_gravidade_display }}</p>
                 <h3>{{ acidente.servidor }}</h3>
                 <p class="card-text">{{ acidente.descricao|truncatechars:120 }}</p>
             </div>

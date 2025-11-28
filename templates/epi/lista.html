@@ -5,7 +5,7 @@
     <div>
         <p class="eyebrow">NR-06</p>
         <h1>Entregas de EPI</h1>
-        <p class="lead">Filtre por status e veja o historico.</p>
+        <p class="lead">Filtre por status e veja o histórico.</p>
     </div>
     <div class="hero-actions">
         <a class="btn primary" href="{% url 'epi:entrega_nova' %}">Nova entrega</a>
@@ -28,7 +28,7 @@
     {% for entrega in entregas %}
         <a class="list-item" href="{% url 'epi:entrega_detalhe' entrega.pk %}">
             <div>
-                <p class="card-eyebrow">{{ entrega.epi }} • {{ entrega.get_status_display }}</p>
+                <p class="card-eyebrow">{{ entrega.epi }} - {{ entrega.get_status_display }}</p>
                 <h3>{{ entrega.servidor }}</h3>
                 <p class="card-text">{{ entrega.observacoes|default:"-" }}</p>
             </div>
