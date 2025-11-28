@@ -24,23 +24,66 @@ def home(request):
     modules = [
         {
             "name": "Acidentes",
-            "slug": "acidentes",
+            "slug": "S-2210",
             "description": "Registros CAT e S-2210",
             "url": reverse("acidentes:index"),
         },
         {
-            "name": "Gestao",
-            "slug": "gestao",
+            "name": "Gestão",
+            "slug": "Cadastros",
             "description": "Cadastros de servidores, EPIs, unidades e setores",
             "url": reverse("gestao"),
         },
-        {"name": "EPI", "slug": "epi", "description": "Controle de EPIs e entregas", "url": reverse("epi:index")},
-        {"name": "Exames", "slug": "exames", "description": "Gestao de exames S-2220", "url": "#exames"},
-        {"name": "Inspecoes", "slug": "inspecoes", "description": "Nao conformidades e planos", "url": "#inspecoes"},
-        {"name": "Treinamentos", "slug": "treinamentos", "description": "Turmas, certificados e validade", "url": "#treinamentos"},
-        {"name": "Relatorios", "slug": "relatorios", "description": "PDFs e indicadores", "url": "#relatorios"},
+        {"name": "EPI", "slug": "NR-06", "description": "Controle de EPIs e entregas", "url": reverse("epi:index")},
+        {"name": "Exames", "slug": "S-2220", "description": "Gestão de exames S-2220", "url": reverse("exames:index")},
+        {"name": "Relatórios", "slug": "Dashboards", "description": "PDFs e indicadores", "url": reverse("relatorios")},
+        {"name": "Inspeções", "slug": "Checklists", "description": "Não conformidades e planos", "url": None},
+        {"name": "Treinamentos", "slug": "Cursos", "description": "Turmas, certificados e validade", "url": None},
     ]
     return render(request, "home.html", {"modules": modules})
+
+
+@login_required
+def relatorios(request):
+    """Landing de relatórios com atalhos para indicadores e exports."""
+    reports = [
+        {
+            "title": "Relatórios de Saúde do Trabalho",
+            "desc": "Exames (S-2220), ASO, vencimentos, afastamentos e indicadores de PCMSO.",
+            "cta": "Abrir Saúde do Trabalho",
+            "url": reverse("relatorios_saude"),
+        },
+        {
+            "title": "Relatórios de Segurança do Trabalho",
+            "desc": "Acidentes (S-2210), EPI, treinamentos por NR, inspeções e planos de ação.",
+            "cta": "Abrir Segurança do Trabalho",
+            "url": reverse("relatorios_seguranca"),
+        },
+    ]
+    return render(request, "relatorios.html", {"reports": reports})
+
+
+@login_required
+def relatorios_saude(request):
+    """Relatórios focados em saúde (S-2220/PCMSO)."""
+    reports = [
+        {"title": "Exames (S-2220)", "desc": "Período, status, vencimentos de ASO."},
+        {"title": "Afastamentos", "desc": "Motivo, datas e CID."},
+        {"title": "Indicadores PCMSO", "desc": "Taxas, pendências e vencimentos."},
+    ]
+    return render(request, "relatorios_saude.html", {"reports": reports})
+
+
+@login_required
+def relatorios_seguranca(request):
+    """Relatórios focados em segurança (S-2210/GRO/PGR)."""
+    reports = [
+        {"title": "Acidentes / CAT (S-2210)", "desc": "Período, unidade, setor, CID."},
+        {"title": "EPI", "desc": "Entregas, CA e validade."},
+        {"title": "Treinamentos", "desc": "Validade por NR e unidade."},
+        {"title": "Inspeções e Planos", "desc": "Não conformidades e status."},
+    ]
+    return render(request, "relatorios_seguranca.html", {"reports": reports})
 
 
 @login_required
@@ -210,16 +253,28 @@ def chat_api(request):
     if not message:
         return JsonResponse({"error": "Mensagem vazia."}, status=400)
 
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = (os.getenv("OPENAI_API_KEY"))
     if not api_key:
         return JsonResponse({"error": "API nao configurada."}, status=503)
 
     client = OpenAI(api_key=api_key)
     system_prompt = (
-        "Voce e um assistente de SST para prefeituras. Responda com base nas NRs vigentes "
-        "(ex.: NR-01, NR-06 EPI, NR-07 PCMSO, NR-09 PGR, NR-10, NR-35) e cite a norma/artigo quando possivel. "
-        "Se a pergunta for sobre navegacao no sistema, oriente o usuario aos modulos: Acidentes/CAT (S-2210), "
-        "Exames (S-2220), EPI, Inspecoes, Treinamentos. Seja conciso."
+        "Voce e um assistente SENIOR de SST para prefeituras, orgãos governamentais, hospitais e empresas, "
+        "tambem atuando como guia do sistema web SST_GOV. "
+        "Estilo de resposta: seja objetivo e didatico; quando a duvida for sobre uso do sistema, responda em passos numerados sem asteriscos "
+        "(Passo 1, Passo 2...) dizendo exatamente onde clicar, que rota abrir e quais campos preencher. "
+        "Para duvidas normativas, responda diretamente citando a NR (NR-01, NR-06 EPI, NR-07 PCMSO, NR-09 PGR, NR-10, NR-18, NR-35 etc.) "
+        "e artigo/item sempre que possivel. "
+        "Contexto do sistema: Home tem cards para Acidentes/CAT (S-2210), EPI (entregas e catalogo), Gestao "
+        "(Servidores, Unidades, Setores, Cargos, EPIs, Entregas), Exames (S-2220), Inspecoes, Treinamentos, Relatorios. "
+        "Rotas uteis: /gestao/ (atalhos de cadastros), /epi/catalogo/ (cadastro de EPIs), /epi/listar/ (entregas), "
+        "/acidentes/ (dashboard acidentes) e /acidentes/listar/, /relatorios/ (Saude e Seguranca). "
+        "Regras de atendimento: "
+        "1) Se for navegacao, priorize orientar dentro do sistema com passos detalhados. "
+        "2) Se for norma, cite a NR pertinente e mantenha a resposta curta e acionavel. "
+        "3) Se for eSocial, contextualize S-2210 (CAT), S-2220 (exames) e S-2240 (riscos) com cuidados de preenchimento. "
+        "4) Se houver duvida ambigua, peça 1 clarificacao rapida e sugira o dado que falta (ex.: período, unidade, setor). "
+        "5) Nao invente dados da organizacao; use apenas o que for informado pelo usuario."
     )
 
     try:
@@ -230,10 +285,11 @@ def chat_api(request):
                 {"role": "user", "content": message},
             ],
             temperature=0.2,
-            max_tokens=300,
+            max_tokens=15000,
         )
         answer = completion.choices[0].message.content
     except Exception:
         return JsonResponse({"error": "Falha ao consultar a IA."}, status=502)
 
     return JsonResponse({"answer": answer})
+

@@ -5,7 +5,7 @@
     <div>
         <p class="eyebrow">NR-06</p>
         <h1>{{ entrega.epi }}</h1>
-        <p class="lead">{{ entrega.servidor }} • Entrega em {{ entrega.data_entrega|date:"d/m/Y" }}</p>
+        <p class="lead">{{ entrega.servidor }} — Entrega em {{ entrega.data_entrega|date:"d/m/Y" }}</p>
     </div>
     <div class="hero-actions">
         <a class="btn" href="{% url 'epi:entrega_editar' entrega.pk %}">Editar</a>
@@ -21,7 +21,7 @@
         <p class="card-text">{{ entrega.quantidade }}</p>
         <p class="card-eyebrow">Validade do EPI entregue</p>
         <p class="card-text">{{ entrega.data_validade|date:"d/m/Y"|default:"-" }}</p>
-        <p class="card-eyebrow">Observacoes</p>
+        <p class="card-eyebrow">Observações</p>
         <p class="card-text">{{ entrega.observacoes|default:"-" }}</p>
     </div>
 </section>

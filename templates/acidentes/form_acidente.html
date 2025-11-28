@@ -28,4 +28,59 @@
         <button class="btn primary" type="submit">Salvar</button>
     </form>
 </section>
+
+<script>
+    (function() {
+        const textarea = document.getElementById('id_descricao');
+        if (!textarea) return;
+        const field = textarea.closest('.field') || textarea.parentElement;
+        const status = document.createElement('div');
+        status.style.marginTop = '6px';
+        status.style.color = 'var(--muted)';
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn small';
+        btn.textContent = 'Revise e melhore';
+
+        function getCookie(name) {
+            return document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith(name + '='))?.split('=')[1] || '';
+        }
+
+        btn.addEventListener('click', async () => {
+            const text = textarea.value.trim();
+            if (!text) {
+                status.textContent = 'Preencha a descricao antes de revisar.';
+                return;
+            }
+            btn.disabled = true;
+            status.textContent = 'Revisando com IA...';
+            try {
+                const res = await fetch("{% url 'chat_api' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({
+                        message: "Revise, corrija erros ortográficos de português, melhore e dê mais corpo ao texto de descrição do acidente, mantendo fatos, datas e nomes, não adicione nenhum tipo de informação que não foi citada. Use linguagem técnica e formal, clara e objetiva, sem inventar dados:\n\n" + text
+                    })
+                });
+                const data = await res.json();
+                if (data.answer) {
+                    textarea.value = data.answer;
+                    status.textContent = 'Texto revisado por IA.';
+                } else {
+                    status.textContent = data.error || 'Nao foi possivel revisar agora.';
+                }
+            } catch (err) {
+                status.textContent = 'Erro ao consultar a IA.';
+            } finally {
+                btn.disabled = false;
+            }
+        });
+
+        field.appendChild(btn);
+        field.appendChild(status);
+    })();
+</script>
 {% endblock %}

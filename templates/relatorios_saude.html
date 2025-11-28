@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Relatórios - Saúde do Trabalho{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">Relatórios</p>
+        <h1>Saúde do Trabalho</h1>
+        <p class="lead">Exames (S-2220), ASO, afastamentos e indicadores de PCMSO.</p>
+    </div>
+</section>
+
+<section class="grid">
+    {% for report in reports %}
+        <article class="card">
+            <div class="card-body">
+                <p class="card-eyebrow">{{ report.title }}</p>
+                <h2>{{ report.title }}</h2>
+                <p class="card-text">{{ report.desc }}</p>
+            </div>
+            <div class="card-footer">
+                <span class="link">Em breve</span>
+            </div>
+        </article>
+    {% empty %}
+        <p>Nenhum relatório configurado.</p>
+    {% endfor %}
+</section>
+{% endblock %}

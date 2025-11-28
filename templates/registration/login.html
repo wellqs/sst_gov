@@ -5,12 +5,12 @@
     <div class="auth-card">
         <h1>Entrar</h1>
         {% if form.errors %}
-            <div class="alert">Usuario ou senha incorretos.</div>
+            <div class="alert">Usuário ou senha incorretos.</div>
         {% endif %}
         <form method="post" novalidate>
             {% csrf_token %}
             <div class="field">
-                <label for="id_username">Usuario</label>
+                <label for="id_username">Usuário</label>
                 <input type="text" name="username" id="id_username" autofocus required>
             </div>
             <div class="field">

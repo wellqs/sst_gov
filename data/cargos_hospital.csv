@@ -1,0 +1,45 @@
+Titulo,CBO,Descrição,Ativo
+Diretor Geral do Hospital,1421-05,"Responsável pela gestão global da unidade hospitalar, definição estratégica e tomada de decisões.",True
+Diretor Clínico,1222-15,Supervisiona a atuação médica e garante a qualidade dos serviços assistenciais.,True
+Diretor Administrativo,1421-10,"Gerencia setores administrativos, financeiros e operacionais do hospital.",True
+Gerente de Enfermagem,2235-20,Supervisiona equipes de enfermagem e coordena processos assistenciais.,True
+Gerente de Recursos Humanos,2524-05,"Executa políticas de RH, recrutamento, capacitação e gestão de pessoal.",True
+Coordenador de SESMT,3516-05,Coordena ações de segurança do trabalho e saúde ocupacional.,True
+Enfermeiro,2235-05,Realiza cuidados assistenciais e coordena equipes técnicas.,True
+Técnico de Enfermagem,3222-05,Presta cuidados diretos ao paciente e administra medicamentos.,True
+Médico Clínico Geral,2251-70,"Realiza consultas, diagnósticos e acompanha pacientes.",True
+Médico Cirurgião,2253-05,Executa procedimentos cirúrgicos e acompanha pré e pós-operatório.,True
+Fisioterapeuta,2236-05,Realiza atendimentos de reabilitação e fisioterapia.,True
+Farmacêutico Hospitalar,2234-05,Gerencia medicamentos e estoque farmacológico.,True
+Nutricionista,2237-10,Planeja dietas e supervisiona produção de refeições.,True
+Psicólogo Hospitalar,2515-05,"Atende pacientes, familiares e servidores.",True
+Assistente Social,2516-05,Realiza apoio social e articulação com redes de assistência.,True
+Biomédico,2212-05,Atua em análises clínicas e exames laboratoriais.,True
+Técnico de Laboratório,3242-05,Realiza análises laboratoriais e coleta de materiais.,True
+Técnico de Raio-X,3241-15,Opera equipamentos de radiologia e realiza exames.,True
+Engenheiro Clínico,2149-15,Gerencia equipamentos médico-hospitalares e manutenção especializada.,True
+Engenheiro Eletricista,2143-05,"Supervisiona sistemas elétricos, geradores e subestações.",True
+Engenheiro Civil,2142-05,"Fiscaliza obras, reformas e infraestrutura predial.",True
+Técnico em Edificações,3112-10,Acompanha obras e manutenção predial.,True
+Técnico de Manutenção,9542-10,"Realiza reparos prediais, elétricos e hidráulicos.",True
+Eletricista Predial,9511-10,Executa instalações e manutenção elétrica.,True
+Encanador / Hidráulico,9515-05,Realiza manutenção de redes hidráulicas.,True
+Técnico de Informática / TI,3171-10,"Suporte técnico, manutenção de sistemas e redes.",True
+Assistente Administrativo,4110-10,"Apoio administrativo, controle documental e atendimento.",True
+Recepcionista Hospitalar,4221-05,Atendimento ao público e cadastro de pacientes.,True
+Auxiliar de Almoxarifado,4141-05,Controle de estoque e distribuição de materiais.,True
+Cozinheiro Hospitalar,5132-05,Prepara refeições conforme normas sanitárias.,True
+Auxiliar de Cozinha,5135-05,Apoio na preparação de alimentos e higienização.,True
+Auxiliar de Serviços Gerais,5143-20,"Limpeza, conservação e coleta de resíduos.",True
+Porteiro,5174-20,Controle de acesso e vigilância da unidade.,True
+Motorista,7823-05,Transporte de pacientes e materiais.,True
+Vigilante,5173-15,Segurança física e patrimonial do hospital.,True
+Contador,2521-05,"Gestão contábil, financeira e orçamentária do hospital.",True
+Analista de Faturamento,2523-10,"Processamento de contas, autorizações e cobranças hospitalares.",True
+Comprador Hospitalar,3322-05,"Aquisição de materiais, insumos e serviços para o hospital.",True 
+Assistente de Compras,4142-05,Apoio no processo de compras e controle de fornecedores.,True
+Estagiário,9999-99,"Atuação em diversas áreas do hospital conforme necessidade.",True
+Auxiliar de Lavanderia,5144-05,"Processamento de roupas, enxoval e EPIs hospitalares.",True
+Técnico de Higienização,5142-05,"Limpeza, desinfecção e sanitização de ambientes hospitalares.",True
+Coordenador de TI,3171-15,"Gestão de infraestrutura de TI, redes e sistemas informatizados.",True
+Analista de Sistemas,3172-05,Desenvolvimento e manutenção de sistemas hospitalares.,True

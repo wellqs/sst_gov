@@ -1,5 +1,5 @@
 Django==5.2.8
-psycopg2-binary==2.9.11
+mysqlclient==2.2.4
 python-dotenv==1.2.1
 openai==1.55.0
 httpx==0.27.2

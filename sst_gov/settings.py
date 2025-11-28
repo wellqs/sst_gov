@@ -77,12 +77,16 @@ WSGI_APPLICATION = "sst_gov.wsgi.application"
 # Database
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB", "sst_gov"),
-        "USER": os.getenv("POSTGRES_USER", "sst_gov"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "sst_gov"),
-        "HOST": os.getenv("POSTGRES_HOST", "localhost"),
-        "PORT": os.getenv("POSTGRES_PORT", "5432"),
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.getenv("MYSQL_DATABASE", "perici73_uelinton"),
+        "USER": os.getenv("MYSQL_USER", "perici73_uelinton"),
+        "PASSWORD": os.getenv("MYSQL_PASSWORD", "P=~MPC9TIeUR"),
+        "HOST": os.getenv("MYSQL_HOST", "50.116.112.115"),
+        "PORT": os.getenv("MYSQL_PORT", "3306"),
+        "OPTIONS": {
+            "charset": "utf8mb4",
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
