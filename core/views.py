@@ -4,6 +4,7 @@ import os
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth import logout
 from django.urls import reverse
 from django.views.decorators.http import require_POST
 
@@ -16,6 +17,13 @@ from .models import Cargo, Servidor, Setor, Unidade
 def healthcheck(request):
     """Retorna status simples para validar deploy e integracao."""
     return JsonResponse({"status": "ok"})
+
+
+@login_required
+def logout_redirect(request):
+    """Efetua logout e redireciona para a tela de login, permitindo GET sem 405."""
+    logout(request)
+    return redirect("login")
 
 
 @login_required

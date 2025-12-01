@@ -23,14 +23,6 @@ urlpatterns = [
     path("gestao/servidores/novo/", views.servidor_create, name="gestao_servidor_novo"),
     path("gestao/servidores/<int:pk>/editar/", views.servidor_update, name="gestao_servidor_editar"),
     path("api/chat/", views.chat_api, name="chat_api"),
-    path(
-        "login/",
-        auth_views.LoginView.as_view(template_name="registration/login.html"),
-        name="login",
-    ),
-    path(
-        "logout/",
-        auth_views.LogoutView.as_view(next_page="login"),
-        name="logout",
-    ),
+    path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
+    path("logout/", views.logout_redirect, name="logout"),
 ]
