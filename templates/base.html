@@ -16,7 +16,7 @@
     {% if request.user.is_authenticated %}
         <div class="user-actions">
             <span class="welcome">Olá, {{ request.user.get_short_name|default:request.user.username }}</span>
-            <a class="link" href="{% url 'logout' %}">Sair</a>
+            <a class="link" href="{% url 'logout' %}?next={% url 'login' %}">Sair</a>
         </div>
     {% endif %}
 </header>
