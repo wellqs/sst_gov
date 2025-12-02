@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class TreinamentosConfig(AppConfig):
+class RelatoriosConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'treinamentos'
+    name = 'app.relatorios'

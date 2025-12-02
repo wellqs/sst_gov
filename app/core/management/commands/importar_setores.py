@@ -3,7 +3,7 @@ from pathlib import Path
 
 from django.core.management.base import BaseCommand, CommandError
 
-from core.models import Setor, Unidade
+from app.core.models import Setor, Unidade
 
 
 class Command(BaseCommand):

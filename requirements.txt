@@ -1,5 +1,6 @@
 Django==5.2.8
-mysqlclient==2.2.4
+# Use PyMySQL como drop-in em vez de compilar mysqlclient no Windows
+PyMySQL==1.1.1
 python-dotenv==1.2.1
 openai==1.55.0
 httpx==0.27.2

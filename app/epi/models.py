@@ -1,6 +1,6 @@
 from django.db import models
 
-from core.models import Servidor, TimeStampedModel
+from app.core.models import Servidor, TimeStampedModel
 
 
 class EPI(TimeStampedModel):

@@ -8,8 +8,6 @@ from django.contrib.auth import logout
 from django.urls import reverse
 from django.views.decorators.http import require_POST
 
-from openai import OpenAI
-
 from .forms import CargoForm, ServidorForm, SetorForm, UnidadeForm
 from .models import Cargo, Servidor, Setor, Unidade
 
@@ -264,6 +262,11 @@ def servidor_update(request, pk):
 @login_required
 def chat_api(request):
     """Endpoint de chat com IA baseada em NRs e contexto de navegacao."""
+    # Importa apenas quando usado para evitar quebrar a aplica��o se o SDK n�o estiver instalado.
+    try:
+        from openai import OpenAI
+    except Exception:
+        return JsonResponse({"error": "Dependencia OpenAI ausente ou invalida."}, status=503)
     try:
         payload = json.loads(request.body.decode("utf-8"))
     except json.JSONDecodeError:

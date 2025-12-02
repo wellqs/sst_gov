@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-from core.models import Servidor, Setor, Unidade, TimeStampedModel
+from app.core.models import Servidor, Setor, Unidade, TimeStampedModel
 
 # Choices reaproveitados em filtros/forms
 ACIDENTE_STATUS_CHOICES = [

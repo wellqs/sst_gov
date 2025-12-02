@@ -4,7 +4,7 @@ from pathlib import Path
 
 from django.core.management.base import BaseCommand, CommandError
 
-from core.models import Cargo, Servidor, Setor, Unidade
+from app.core.models import Cargo, Servidor, Setor, Unidade
 
 
 class Command(BaseCommand):

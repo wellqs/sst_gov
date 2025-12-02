@@ -35,13 +35,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Apps de domínio
-    "core",
-    "acidentes",
-    "epi",
-    "exames",
-    "inspecoes",
-    "treinamentos",
-    "relatorios",
+    "app.core",
+    "app.acidentes",
+    "app.epi",
+    "app.exames",
+    "app.inspecoes",
+    "app.treinamentos",
+    "app.relatorios",
 ]
 
 MIDDLEWARE = [
